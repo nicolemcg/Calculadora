@@ -1,7 +1,8 @@
 import React from 'react';
 import freeCodeCampLogo from '../imagenes/freecodecamplogo.png'
+import '../hojas-de-estilo/Logo.css';
 
-const Logo = ()=> {
+const Logo = ()=> (
     <div className = 'freecodecamp-logo-contenedor'>
         <img
           src={freeCodeCampLogo}
@@ -9,6 +10,6 @@ const Logo = ()=> {
           alt ='Logo de freeCodeCamp' />
 
       </div>
-};
+);
 
 export default Logo;

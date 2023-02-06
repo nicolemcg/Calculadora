@@ -1,8 +1,9 @@
 import './App.css';
-import freeCodeCampLogo from './imagenes/freecodecamplogo.png';
+
 import Boton from './componentes/Boton';
 import Pantalla from './componentes/Pantalla';
 import BotonClear from './componentes/BotonClear';
+import Logo from './componentes/Logo';
 
 import {useState} from 'react';//importar para hook
 
