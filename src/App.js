@@ -3,6 +3,7 @@ import freeCodeCampLogo from './imagenes/freecodecamplogo.png';
 import Boton from './componentes/Boton';
 import Pantalla from './componentes/Pantalla';
 import BotonClear from './componentes/BotonClear';
+
 import {useState} from 'react';//importar para hook
 
 import {evaluate} from 'mathjs';
@@ -15,19 +16,17 @@ function App() {
   };
 
   const calcularResultado = () => {
-    setInput(evaluate(input));
+    if (input){  //cadenas de caracter vacias son falso
+      setInput(evaluate(input));
+    }else{
+      alert("por favor ingrese valores para realizar los calculos.");
+    }
   };
 
 
   return (
     <div className="App">
-      <div className = 'freecodecamp-logo-contenedor'>
-        <img
-          src={freeCodeCampLogo}
-          className = 'freecodecamp-logo'
-          alt ='Logo de freeCodeCamp' />
-
-      </div>
+      <Logo />
       <div className='contenedor-calculadora'>
         <Pantalla input={input}/>
 
@@ -50,7 +49,7 @@ function App() {
           <Boton manejarClic={agregarInput}>*</Boton>
         </div>
         <div className='fila'>
-          <Boton manejarClic={agregarInput}>=</Boton>
+          <Boton manejarClic={calcularResultado}>=</Boton>
           <Boton manejarClic={agregarInput}>0</Boton>
           <Boton manejarClic={agregarInput}>.</Boton>
           <Boton manejarClic={agregarInput}>/</Boton>
