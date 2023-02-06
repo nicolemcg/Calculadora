@@ -1,8 +1,24 @@
 import './App.css';
 import freeCodeCampLogo from './imagenes/freecodecamplogo.png';
 import Boton from './componentes/Boton';
+import Pantalla from './componentes/Pantalla';
+import BotonClear from './componentes/BotonClear';
+import {useState} from 'react';//importar para hook
+
+import {evaluate} from 'mathjs';
 
 function App() {
+  const[input, setInput] = useState('') ; //hook
+
+  const agregarInput = val =>{
+    setInput(input +val);
+  };
+
+  const calcularResultado = () => {
+    setInput(evaluate(input));
+  };
+
+
   return (
     <div className="App">
       <div className = 'freecodecamp-logo-contenedor'>
@@ -13,16 +29,37 @@ function App() {
 
       </div>
       <div className='contenedor-calculadora'>
+        <Pantalla input={input}/>
+
         <div className='fila'>
-          <Boton>1</Boton>
-          <Boton>+</Boton>
-          <Boton>1</Boton>
-          <Boton>1</Boton>
+          <Boton manejarClic={agregarInput}>1</Boton>
+          <Boton manejarClic={agregarInput}>2</Boton>
+          <Boton manejarClic={agregarInput}>3</Boton>
+          <Boton manejarClic={agregarInput}>+</Boton>
         </div>
-        <div className='fila'></div>
-        <div className='fila'></div>
-        <div className='fila'> </div>
-        <div className='fila'> </div>
+        <div className='fila'>
+          <Boton manejarClic={agregarInput}>4</Boton>
+          <Boton manejarClic={agregarInput}>5</Boton>
+          <Boton manejarClic={agregarInput}>6</Boton>
+          <Boton manejarClic={agregarInput}>-</Boton>
+        </div>
+        <div className='fila'>
+          <Boton manejarClic={agregarInput}>7</Boton>
+          <Boton manejarClic={agregarInput}>8</Boton>
+          <Boton manejarClic={agregarInput}>9</Boton>
+          <Boton manejarClic={agregarInput}>*</Boton>
+        </div>
+        <div className='fila'>
+          <Boton manejarClic={agregarInput}>=</Boton>
+          <Boton manejarClic={agregarInput}>0</Boton>
+          <Boton manejarClic={agregarInput}>.</Boton>
+          <Boton manejarClic={agregarInput}>/</Boton>
+        </div>
+        <div className='fila'> 
+          <BotonClear manejarClear={() => setInput('')} >
+            Clear
+            </BotonClear>
+        </div>
       </div>
     </div>
   );

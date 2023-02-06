@@ -1,4 +1,5 @@
 import react from 'react';
+import '../hojas-de-estilo/Boton.css'
 
 
 function Boton(props){
@@ -7,9 +8,10 @@ function Boton(props){
         return isNaN(valor) && (valor !== '.') && (valor !== '=');
     };
 
-    return (
+    return ( //onclick debe tener una funcion por eso se agrega '() =>', sin eso solo retorna un valor
         <div 
-            className={`boton-contenedor ${esOperador(props.children)? 'operador': null}`}>
+            className={`boton-contenedor ${esOperador(props.children)? 'operador': null}`.trim()}
+            onClick ={() => props.manejarClic(props.children)}>
             {props.children}
         </div>
     );
